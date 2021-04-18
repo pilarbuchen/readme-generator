@@ -1,20 +1,50 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseBadge(licenseInfo) {
+  if (!licenseInfo) {
+    return '';
+  }
+  return `
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
-
-`;
+  ## License
+  ![License](https://img.shields.io/badge/License-${licenseInfo}-blue.svg)`
 }
 
-module.exports = generateMarkdown;
+function renderLanguageBadge(language) {
+if (!language) {
+  return '';
+}
+return `
+  ## Language
+  ![Image of Badge](https://img.shields.io/badge/-${language}-61DAFB)`
+}
+
+module.exports = templateData => {
+
+  const {projectName, description, email, Installation, Usage, usagePicture, githubname, licenseInfo, language} = templateData;
+
+  return  `# ${projectName}
+
+  ## Description 
+  ${description}
+
+  ## Table of contents 
+  1. [Installation](#installation)
+  2. [Usage](#usage)
+  3. [License](#license)
+  4. [Language Badge](#Language)
+
+  ## Installation
+  ${Installation}
+
+  ## Usage
+  ${Usage}
+  ![Image of Usage Pic](${usagePicture})
+
+  ${renderLicenseBadge(licenseInfo)}
+
+  ${renderLanguageBadge(language)}
+
+  ## Questions 
+  - Contact me via email at ${email}
+  - Visit my [Github Page](www.github.com/${githubname})`
+};
