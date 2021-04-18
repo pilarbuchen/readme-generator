@@ -1,4 +1,4 @@
-# Professional README Generator Starter Code
+# Professional README Generator
 
 - For this applcation, I have build a README generator. 
 
